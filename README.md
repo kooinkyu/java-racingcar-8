@@ -26,3 +26,31 @@
 - [X] 구현 완료
 
 
+## 🔧 구현 구조
+| 클래스명            | 메서드명                           | 기능        | 설명                          |
+| --------------- | ------------------------------ | --------- | --------------------------- |
+| **InputView**   | `readCarNames()`               | 자동차 이름 입력 | 쉼표로 구분된 자동차 이름을 입력받고 유효성 검증 |
+|                 | `readRacingCount()`            | 시도 횟수 입력  | 1 이상의 정수를 입력받고 유효성 검증       |
+| **OutputView**  | `printResultMessage()`         | 결과 메시지 출력 | `"실행 결과"` 문구 출력             |
+|                 | `printRacingResult(List<Car>)` | 경주 결과 출력  | 각 자동차의 현재 위치를 출력            |
+|                 | `printWinners(List<String>)`   | 우승자 출력    | 최종 우승자 이름 출력                |
+| **Car**         | `Car(String name)`             | 생성자       | 자동차 이름 저장, 초기 위치 0 설정       |
+|                 | `move()`                       | 이동        | 0~9 랜덤값이 4 이상이면 전진          |
+|                 | `getName()`                    | 이름 조회     | 자동차 이름 반환                   |
+|                 | `getPosition()`                | 위치 조회     | 현재 위치 반환                    |
+| **Game**        | `Game(String carNames)`        | 생성자       | 쉼표로 구분된 이름으로 자동차 목록 생성      |
+|                 | `race()`                       | 경주 진행     | 모든 자동차가 한 번씩 이동 시도          |
+|                 | `getCars()`                    | 자동차 목록 조회 | 현재 자동차 목록 반환                |
+|                 | `getWinners()`                 | 우승자 계산    | 가장 많이 전진한 자동차 이름 반환         |
+| **Application** | `main(String[] args)`          | 실행 진입점    | 전체 게임 흐름 제어 및 실행            |
+
+
+### 실행 흐름
+1. 자동차 이름 입력 (InputView)
+2. 시도 횟수 입력 (InputView)
+3. Game 객체 생성
+4. 입력받은 횟수만큼 반복:
+    - 모든 자동차 이동 (Game.race())
+    - 현재 상태 출력 (OutputView)
+5. 우승자 계산 및 출력 (Game.getWinners() → OutputView)
+
